@@ -2,7 +2,7 @@
 
 sudo apt-get update
 
-sudo apt-get install -y git libevent-dev ncurses-dev build-essential bison pkg-config ripgrep zip unzip make pkg-config nodejs tmux
+sudo apt-get install -y git libevent-dev ncurses-dev build-essential bison pkg-config ripgrep zip unzip make pkg-config nodejs npm tmux
 
 rm -rf ~/.config
 
@@ -19,6 +19,8 @@ echo "" >> ~/.bashrc
 cat ~/.dotfiles/.bashrc >> ~/.bashrc
 
 ln -s ~/.dotfiles/tmux/ ~/.config/tmux
+
+curl -fsSL https://get.pnpm.io/install.sh | sh -
 
 # Download the latest Neovim AppImage
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
