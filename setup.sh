@@ -2,7 +2,7 @@
 
 sudo apt-get update
 
-sudo apt-get install -y git libevent-dev ncurses-dev build-essential bison pkg-config curl ripgrep zip unzip make pkg-config nodejs tmux
+sudo apt-get install -y git libevent-dev ncurses-dev build-essential bison pkg-config ripgrep zip unzip make pkg-config nodejs tmux
 
 rm -rf ~/.config
 
