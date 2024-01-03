@@ -30,6 +30,8 @@ tar xf lazygit.tar.gz lazygit
 
 sudo install lazygit /usr/local/bin
 
+rm lazygit lazygit.tar.gz
+
 # Download the latest Neovim AppImage
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 
