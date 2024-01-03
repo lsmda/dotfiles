@@ -42,3 +42,4 @@ sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 
 rm nvim.appimage
 
+source /home/user/.bashrc
