@@ -36,7 +36,7 @@ wget -O JetBrainsMono.zip https://download.jetbrains.com/fonts/JetBrainsMono-2.3
 
 unzip /home/user/JetBrainsMono.zip
 
-mv /home/user/fonts/ttf/ /usr/share/fonts/truetype/JetBrainsMono/
+mv /home/user/fonts/ttf/ /home/user/.local/share/fonts/truetype/JetBrainsMono/
 
 rm -rf /usr/share/fonts/truetype/dejavu
 
