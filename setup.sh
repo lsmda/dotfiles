@@ -4,21 +4,21 @@ sudo apt-get update
 
 sudo apt-get install -y git libevent-dev ncurses-dev build-essential bison pkg-config ripgrep zip unzip xclip make pkg-config nodejs npm tmux
 
-rm -rf ~/.config
+rm -rf /home/user/.config
 
-mkdir -p ~/.config
+mkdir -p /home/user/.config
 
-git clone https://github.com/lsmda/nvim ~/.config/nvim
+git clone https://github.com/lsmda/nvim /home/user/.config/nvim
 
 git clone https://github.com/lsmda/.dotfiles
 
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm home/user/.tmux/plugins/tpm
 
-echo "" >> ~/.bashrc
+echo "" >> /home/user/.bashrc
 
-cat ~/.dotfiles/.bashrc >> ~/.bashrc
+cat /home/user/.dotfiles/.bashrc >> /home/user/.bashrc
 
-ln -s ~/.dotfiles/tmux/ ~/.config/tmux
+ln -s /home/user/.dotfiles/tmux/ /home/user/.config/tmux
 
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 
@@ -30,17 +30,17 @@ tar xf lazygit.tar.gz lazygit
 
 sudo install lazygit /usr/local/bin
 
-rm lazygit lazygit.tar.gz
+rm lazygit /home/user/lazygit.tar.gz
 
 wget -O JetBrainsMono.zip https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
 
-unzip JetBrainsMono.zip
+unzip /home/user/JetBrainsMono.zip
 
-mv ./fonts/ttf/ /usr/share/fonts/truetype/JetBrainsMono/
+mv /home/user/fonts/ttf/ /usr/share/fonts/truetype/JetBrainsMono/
 
 rm -rf /usr/share/fonts/truetype/dejavu
 
-rm -rf AUTHORS.txt JetBrainsMono.zip OFL.txt fonts
+rm -rf /home/user/AUTHORS.txt /home/user/JetBrainsMono.zip /home/user/OFL.txt /home/user/fonts
 
 # Download the latest Neovim AppImage
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
@@ -49,7 +49,7 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
 
 # Extract the AppImage
-./nvim.appimage --appimage-extract
+/home/user/nvim.appimage --appimage-extract
 
 # Move extracted Neovim to root directory
 sudo mv squashfs-root /
@@ -60,6 +60,6 @@ sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 # Check the version of Neovim
 /squashfs-root/AppRun --version
 
-rm nvim.appimage
+rm /home/user/nvim.appimage
 
 source /home/user/.bashrc
