@@ -32,6 +32,16 @@ sudo install lazygit /usr/local/bin
 
 rm lazygit lazygit.tar.gz
 
+wget -O JetBrainsMono.zip https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
+
+unzip JetBrainsMono.zip
+
+mv ./fonts/ttf/ /usr/share/fonts/truetype/JetBrainsMono/
+
+rm -rf /usr/share/fonts/truetype/dejavu
+
+rm -rf AUTHORS.txt JetBrainsMono.zip OFL.txt fonts
+
 # Download the latest Neovim AppImage
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 
