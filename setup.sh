@@ -1,61 +1,47 @@
 #!/bin/bash
 
+# Update system repositories and install essential packages
 sudo apt-get update
+sudo apt-get install -y git libevent-dev ncurses-dev \
+  build-essential bison pkg-config ripgrep zip unzip \
+  xclip make pkg-config nodejs npm tmux
 
-sudo apt-get install -y git libevent-dev ncurses-dev build-essential bison pkg-config ripgrep zip unzip xclip make pkg-config nodejs npm tmux
-
+# Create necessary directories
 mkdir -p ~/.config
+mkdir -p ~/.local/share/fonts/truetype/JetBrainsMono/
 
+# Clone necessary repositories
 git clone https://github.com/lsmda/nvim ~/.config/nvim
-
 git clone https://github.com/lsmda/.dotfiles
-
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+# Append custom bashrc content to the existing bashrc
 echo "" >> ~/.bashrc
-
 cat ~/.dotfiles/.bashrc >> ~/.bashrc
 
+# Create symbolic links for tmux configuration
 ln -s ~/.dotfiles/tmux/ ~/.config/tmux
 
+# Install pnpm
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 
-LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-
-curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-
-tar xf lazygit.tar.gz lazygit
-
-sudo install lazygit /usr/local/bin
-
-rm ~/lazygit ~/lazygit.tar.gz
-
+# Download and install JetBrains Mono font
 wget -O JetBrainsMono.zip https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
+unzip JetBrainsMono.zip -d ~/JetBrainsMono
+mv ~/JetBrainsMono/fonts/ttf/* ~/.local/share/fonts/truetype/JetBrainsMono/
+rm -rf ~/JetBrainsMono ~/JetBrainsMono.zip
 
-unzip ~/JetBrainsMono.zip
-
-mv ~/fonts/ttf/ ~/.local/share/fonts/truetype/JetBrainsMono/
-
+# Remove DejaVu fonts (optional, consider if needed)
 rm -rf /usr/share/fonts/truetype/dejavu
 
-rm -rf ~/AUTHORS.txt ~/JetBrainsMono.zip ~/OFL.txt ~/fonts
-
-# Download the latest Neovim AppImage
+# Download and install Neovim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-
-# Make the AppImage executable
 chmod u+x ~/nvim.appimage
-
-# Extract the AppImage
 ~/nvim.appimage --appimage-extract
-
-# Move extracted Neovim to root directory
 sudo mv ~/squashfs-root /
-
-# Create a symbolic link to Neovim in the system bin directory
 sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
-
 rm ~/nvim.appimage
 
-# Check the version of Neovim
+# Check Neovim version
 /squashfs-root/AppRun --version
+
