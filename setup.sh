@@ -26,13 +26,13 @@ ln -s ~/.dotfiles/tmux/ ~/.config/tmux
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 
 # Download and install JetBrains Mono font
-wget -O JetBrainsMono.zip https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
-unzip JetBrainsMono.zip -d ~/JetBrainsMono
-mv ~/JetBrainsMono/fonts/ttf/* ~/.local/share/fonts/truetype/JetBrainsMono/
-rm -rf ~/JetBrainsMono ~/JetBrainsMono.zip
+# wget -O JetBrainsMono.zip https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
+# unzip JetBrainsMono.zip -d ~/JetBrainsMono
+# mv ~/JetBrainsMono/fonts/ttf/* ~/.local/share/fonts/truetype/JetBrainsMono/
+# rm -rf ~/JetBrainsMono ~/JetBrainsMono.zip
 
 # Remove DejaVu fonts (optional, consider if needed)
-rm -rf /usr/share/fonts/truetype/dejavu
+# rm -rf /usr/share/fonts/truetype/dejavu
 
 # Download and install Neovim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
