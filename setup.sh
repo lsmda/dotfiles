@@ -24,9 +24,6 @@ cat /home/.dotfiles/.bashrc >> /home/.bashrc
 # Create symbolic links for tmux configuration
 ln -s /home/.dotfiles/tmux/ /home/.config/tmux
 
-# Install pnpm
-curl -fsSL https://get.pnpm.io/install.sh | sh -
-
 # Download and install Neovim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x /home/nvim.appimage
