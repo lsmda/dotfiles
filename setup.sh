@@ -6,41 +6,34 @@ sudo apt-get install -y git libevent-dev ncurses-dev \
   build-essential bison pkg-config ripgrep zip unzip \
   xclip make pkg-config nodejs npm tmux
 
+# Change into home directory
+cd /home
+
 # Create necessary directories
-mkdir -p ~/.config
-mkdir -p ~/.local/share/fonts/truetype/JetBrainsMono/
+mkdir -p /home/.config
 
 # Clone necessary repositories
-git clone https://github.com/lsmda/nvim ~/.config/nvim
+git clone https://github.com/lsmda/nvim /home/.config/nvim
 git clone https://github.com/lsmda/.dotfiles
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm /home/.tmux/plugins/tpm
 
 # Append custom bashrc content to the existing bashrc
-echo "" >> ~/.bashrc
-cat ~/.dotfiles/.bashrc >> ~/.bashrc
+echo "" >> /home/.bashrc
+cat /home/.dotfiles/.bashrc >> /home/.bashrc
 
 # Create symbolic links for tmux configuration
-ln -s ~/.dotfiles/tmux/ ~/.config/tmux
+ln -s /home/.dotfiles/tmux/ /home/.config/tmux
 
 # Install pnpm
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 
-# Download and install JetBrains Mono font
-# wget -O JetBrainsMono.zip https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
-# unzip JetBrainsMono.zip -d ~/JetBrainsMono
-# mv ~/JetBrainsMono/fonts/ttf/* ~/.local/share/fonts/truetype/JetBrainsMono/
-# rm -rf ~/JetBrainsMono ~/JetBrainsMono.zip
-
-# Remove DejaVu fonts (optional, consider if needed)
-# rm -rf /usr/share/fonts/truetype/dejavu
-
 # Download and install Neovim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod u+x ~/nvim.appimage
-~/nvim.appimage --appimage-extract
-sudo mv ~/squashfs-root /
+chmod u+x /home/nvim.appimage
+/home/nvim.appimage --appimage-extract
+sudo mv /home/squashfs-root /
 sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
-rm ~/nvim.appimage
+rm /home/nvim.appimage
 
 # Check Neovim version
 /squashfs-root/AppRun --version
