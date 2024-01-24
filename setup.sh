@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Check if the base_path argument was provided
+if [ -z "$1" ]; then
+    echo "Missing base_path argument"
+    exit 1
+fi
+
+base_path=$1
+
 # Update system repositories and install essential packages
 sudo apt-get update
 sudo apt-get install -y git libevent-dev ncurses-dev \
@@ -28,12 +36,12 @@ sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 rm /nvim.appimage
 
 # Create necessary directories
-mkdir -p /root/.config
+mkdir -p "$base_path/.config"
 
 # Setup configuration dotfiles and nvim config
-git clone https://github.com/lsmda/nvim /root/.config/nvim
-git clone https://github.com/lsmda/.dotfiles /root
-git clone https://github.com/tmux-plugins/tpm /root/.tmux/plugins/tpm
+git clone https://github.com/lsmda/nvim "$base_path/.config/nvim"
+git clone https://github.com/lsmda/.dotfiles "$base_path"
+git clone https://github.com/tmux-plugins/tpm "$base_path/.tmux/plugins/tpm"
 
 # Create symbolic links for tmux configuration
-ln -s /root/.dotfiles/tmux/ /root/.config/tmux
+ln -s "$base_path/.dotfiles/tmux/" "$base_path/.config/tmux"
