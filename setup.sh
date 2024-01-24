@@ -11,7 +11,7 @@ mkdir -p /root/.config
 
 # Clone necessary repositories
 git clone https://github.com/lsmda/nvim /root/.config/nvim
-git clone https://github.com/lsmda/.dotfiles
+git clone https://github.com/lsmda/.dotfiles /root
 git clone https://github.com/tmux-plugins/tpm /root/.tmux/plugins/tpm
 
 # Create symbolic links for tmux configuration
