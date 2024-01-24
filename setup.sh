@@ -6,17 +6,6 @@ sudo apt-get install -y git libevent-dev ncurses-dev \
   build-essential bison pkg-config ripgrep zip unzip \
   xclip make pkg-config nodejs npm tmux
 
-# Create necessary directories
-mkdir -p /root/.config
-
-# Clone necessary repositories
-git clone https://github.com/lsmda/nvim /root/.config/nvim
-git clone https://github.com/lsmda/.dotfiles /root
-git clone https://github.com/tmux-plugins/tpm /root/.tmux/plugins/tpm
-
-# Create symbolic links for tmux configuration
-ln -s /root/.dotfiles/tmux/ /root/.config/tmux
-
 # Download and install LazyGit
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
@@ -31,3 +20,13 @@ chmod u+x /nvim.appimage
 sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 rm /nvim.appimage
 
+# Create necessary directories
+mkdir -p /root/.config
+
+# Setup configuration dotfiles and nvim config
+git clone https://github.com/lsmda/nvim /root/.config/nvim
+git clone https://github.com/lsmda/.dotfiles /root
+git clone https://github.com/tmux-plugins/tpm /root/.tmux/plugins/tpm
+
+# Create symbolic links for tmux configuration
+ln -s /root/.dotfiles/tmux/ /root/.config/tmux
