@@ -2,11 +2,10 @@
 
 # Check if the BASE_DIR variable was provided
 if [ -z "$1" ]; then
-    echo "Missing BASE_DIR variable"
-    exit 1
+    BASE_DIR="/root"
+else
+    BASE_DIR=$1
 fi
-
-BASE_DIR=$1
 
 # Update system repositories and install essential packages
 sudo apt-get update
