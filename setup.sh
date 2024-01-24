@@ -7,10 +7,11 @@ else
     BASE_DIR=$1
 fi
 
+cd "$BASE_DIR"
+
 # Update system repositories and install essential packages
-sudo apt-get update
-sudo apt-get install -y git libevent-dev ncurses-dev \
-  build-essential bison pkg-config ripgrep zip unzip \
+sudo apt-get update && sudo apt-get install -y git libevent-dev \
+  ncurses-dev build-essential bison pkg-config ripgrep zip unzip \
   xclip make pkg-config nodejs npm tmux
 
 # Download and install LazyGit
@@ -23,8 +24,8 @@ rm lazygit lazygit.tar.gz
 # Download and install Neovim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x /nvim.appimage
-/nvim.appimage --appimage-extract
-sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
+"$BASE_DIR/nvim.appimage" --appimage-extract
+sudo ln -s "$BASE_DIR/squashfs-root/AppRun" /usr/bin/nvim
 rm /nvim.appimage
 
 # Create necessary directories
@@ -37,3 +38,5 @@ git clone https://github.com/tmux-plugins/tpm "$BASE_DIR/.tmux/plugins/tpm"
 
 # Create symbolic links for tmux configuration
 ln -s "$BASE_DIR/.dotfiles/tmux/" "$BASE_DIR/.config/tmux"
+
+cd
