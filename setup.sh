@@ -33,7 +33,7 @@ mkdir -p "$BASE_DIR/.config"
 
 # Setup configuration dotfiles and nvim config
 git clone https://github.com/lsmda/nvim "$BASE_DIR/.config/nvim"
-git clone https://github.com/lsmda/.dotfiles "$BASE_DIR"
+git clone https://github.com/lsmda/.dotfiles "$BASE_DIR/.dotfiles"
 git clone https://github.com/tmux-plugins/tpm "$BASE_DIR/.tmux/plugins/tpm"
 
 # Create symbolic links for tmux configuration
