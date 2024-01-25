@@ -23,7 +23,7 @@ rm lazygit lazygit.tar.gz
 
 # Download and install Neovim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod u+x /nvim.appimage
+chmod u+x "$BASE_DIR/nvim.appimage"
 "$BASE_DIR/nvim.appimage" --appimage-extract
 sudo ln -s "$BASE_DIR/squashfs-root/AppRun" /usr/bin/nvim
 rm "$BASE_DIR/nvim.appimage"
