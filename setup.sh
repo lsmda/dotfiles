@@ -26,7 +26,7 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x /nvim.appimage
 "$BASE_DIR/nvim.appimage" --appimage-extract
 sudo ln -s "$BASE_DIR/squashfs-root/AppRun" /usr/bin/nvim
-rm /nvim.appimage
+rm "$BASE_DIR/nvim.appimage"
 
 # Create necessary directories
 mkdir -p "$BASE_DIR/.config"
