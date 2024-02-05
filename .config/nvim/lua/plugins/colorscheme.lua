@@ -1,36 +1,28 @@
 return {
-	"catppuccin/nvim",
-	name = "catppuccin",
-	commit = "5e36ca599f4aa41bdd87fbf2c5aae4397ac55074",
+	"rose-pine/neovim",
+	name = "rose-pine",
+	commit = "14b371fb783a8cfdade04544fb782f0bb6f7c904",
 	priority = 1001,
 	config = function()
-		require("catppuccin").setup({
-			transparent_background = true,
-			term_colors = true,
-			integrations = {
-				cmp = true,
-				gitsigns = true,
-				nvimtree = true,
-				treesitter = true,
-				notify = true,
-				lsp_saga = true,
-				mason = false,
-				mini = {
-					enabled = true,
-					indentscope_color = "surface2",
-				},
-				telescope = { enabled = true },
-				native_lsp = { enabled = true },
+		require("rose-pine").setup({
+			variant = "moon", -- auto, main, moon, or dawn
+			dark_variant = "moon", -- main, moon, or dawn
+			dim_inactive_windows = false,
+			extend_background_behind_borders = true,
+
+			enable = {
+				terminal = true,
+				legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
+				migrations = true, -- Handle deprecated options automatically
 			},
-			custom_highlights = function(colors)
-				return {
-					Comment = { fg = colors.overlay0 },
-					GitSignsCurrentLineBlame = { fg = colors.overlay1 },
-					LineNr = { fg = colors.lavender },
-				}
-			end,
+
+			styles = {
+				bold = true,
+				italic = true,
+				transparency = true,
+			},
 		})
 
-		vim.cmd.colorscheme("catppuccin")
+		vim.cmd.colorscheme("rose-pine")
 	end,
 }
