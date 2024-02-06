@@ -1,1 +1,4 @@
 .config/tmux/plugins/
+.config/btop/btop.conf
+.config/fish/fish_variables
+
