@@ -1,14 +1,5 @@
 #!/bin/bash
 
-# Check if the BASE_DIR variable was provided
-if [ -z "$1" ]; then
-    BASE_DIR="/root"
-else
-    BASE_DIR=$1
-fi
-
-cd "$BASE_DIR"
-
 # Update system repositories and install essential packages
 sudo apt-get update && sudo apt-get install -y git libevent-dev \
   ncurses-dev build-essential bison pkg-config ripgrep zip unzip \
@@ -23,20 +14,8 @@ rm lazygit lazygit.tar.gz
 
 # Download and install Neovim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod u+x "$BASE_DIR/nvim.appimage"
-"$BASE_DIR/nvim.appimage" --appimage-extract
-sudo ln -s "$BASE_DIR/squashfs-root/AppRun" /usr/bin/nvim
-rm "$BASE_DIR/nvim.appimage"
-
-# Create necessary directories
-mkdir -p "$BASE_DIR/.config"
-
-# Setup configuration dotfiles and nvim config
-git clone https://github.com/lsmda/nvim "$BASE_DIR/.config/nvim"
-git clone https://github.com/lsmda/.dotfiles "$BASE_DIR/.dotfiles"
-git clone https://github.com/tmux-plugins/tpm "$BASE_DIR/.tmux/plugins/tpm"
-
-# Create symbolic links for tmux configuration
-ln -s "$BASE_DIR/.dotfiles/tmux/" "$BASE_DIR/.config/tmux"
-
-cd
+chmod u+x nvim.appimage
+nvim.appimage --appimage-extract
+sudo mv squashfs-root /
+sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
+rm nvim.appimage
