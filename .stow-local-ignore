@@ -2,7 +2,7 @@
 .gitignore
 .gitmodules
 
-scripts
-windows-terminal
-
 README.md
+
+scripts
+vscode
