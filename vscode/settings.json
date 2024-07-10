@@ -62,10 +62,6 @@
   // ------------------------------------------------------------------------
   // Misc -------------------------------------------------------------------
   // ------------------------------------------------------------------------
-  "background.backgroundOpacity": [0.95, 0.9, 0.9, 0.9],
-  "background.windowBackgrounds": [
-    "c:/Users/user/Pictures/Saved Pictures/GNGojXUXwAA8qkP.jpg"
-  ],
   "breadcrumbs.enabled": true,
   "emmet.excludeLanguages": ["javascriptreact", "javascript", "typescriptreact", "typescript"],
   "explorer.confirmDelete": false,
@@ -74,7 +70,6 @@
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 500,
   "git.confirmSync": false,
-  "prettier.printWidth": 95,
   "security.workspace.trust.untrustedFiles": "open",
   "settingsSync.ignoredSettings": ["-window.zoomLevel"],
   "typescript.preferences.preferTypeOnlyAutoImports": true,
@@ -82,9 +77,7 @@
   "update.showReleaseNotes": false,
   "window.menuBarVisibility": "toggle",
   "window.customTitleBarVisibility": "auto",
-  "background.autoInstall": false,
   "remote.autoForwardPortsSource": "hybrid",
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none",
-  "workbench.statusBar.visible": false
+  "workbench.startupEditor": "none"
 }
