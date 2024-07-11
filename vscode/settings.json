@@ -13,7 +13,7 @@
   "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', Consolas, monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 12,
-  "editor.fontWeight": 400,
+  "editor.fontWeight": 300,
   "editor.formatOnSave": true,
   "editor.guides.bracketPairs": "active",
   "editor.hover.enabled": false,
@@ -33,7 +33,7 @@
     "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
   },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.autopep8"
+    "editor.defaultFormatter": "ms-python.black-formatter"
   },
 
   // ------------------------------------------------------------------------
@@ -59,6 +59,8 @@
   "workbench.layoutControl.enabled": false,
   "workbench.settings.editor": "json",
   "workbench.tree.indent": 15,
+  "workbench.sideBar.location": "right",
+  "workbench.startupEditor": "none",
 
   // ------------------------------------------------------------------------
   // Misc -------------------------------------------------------------------
@@ -71,14 +73,12 @@
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 500,
   "git.confirmSync": false,
+  "remote.autoForwardPortsSource": "hybrid",
   "security.workspace.trust.untrustedFiles": "open",
-  "settingsSync.ignoredSettings": ["-window.zoomLevel"],
   "typescript.preferences.preferTypeOnlyAutoImports": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "update.showReleaseNotes": false,
-  "window.menuBarVisibility": "toggle",
   "window.customTitleBarVisibility": "auto",
-  "remote.autoForwardPortsSource": "hybrid",
-  "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none",
+  "window.menuBarVisibility": "toggle",
+  "window.zoomLevel": 2
 }
