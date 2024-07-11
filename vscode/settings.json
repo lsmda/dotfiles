@@ -3,6 +3,10 @@
   // Editor -----------------------------------------------------------------
   // ------------------------------------------------------------------------
   "editor.bracketPairColorization.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.organizeImports": "always"
+  },
   "editor.cursorBlinking": "smooth",
   "editor.cursorStyle": "block",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -28,11 +32,8 @@
   "[sql]": {
     "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
   },
-  "[svelte]": {
-    "editor.defaultFormatter": "svelte.svelte-vscode"
-  },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
+    "editor.defaultFormatter": "ms-python.autopep8"
   },
 
   // ------------------------------------------------------------------------
@@ -79,5 +80,5 @@
   "window.customTitleBarVisibility": "auto",
   "remote.autoForwardPortsSource": "hybrid",
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
 }
