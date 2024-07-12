@@ -1,7 +1,5 @@
 [
-  // --------------------------------------------------------------------------------
   // Editor -------------------------------------------------------------------------
-  // --------------------------------------------------------------------------------
   {
     "key": "ctrl+g ctrl+d",
     "command": "gitlens.diffWithRevisionFrom"
@@ -19,9 +17,7 @@
     "command": "editor.action.showDefinitionPreviewHover"
   },
 
-  // --------------------------------------------------------------------------------
   // Files Explorer -----------------------------------------------------------------
-  // --------------------------------------------------------------------------------
   {
     "key": "w",
     "command": "list.selectAndPreserveFocus",
@@ -79,9 +75,7 @@
     "command": "workbench.view.remote"
   },
 
-  // --------------------------------------------------------------------------------
   // Terminal -----------------------------------------------------------------------
-  // --------------------------------------------------------------------------------
   {
     "key": "alt+w",
     "command": "workbench.action.togglePanel"
@@ -127,9 +121,7 @@
     "when": "terminalFocus"
   },
 
-  // --------------------------------------------------------------------------------
   // Misc ---------------------------------------------------------------------------
-  // --------------------------------------------------------------------------------
   {
     "key": "alt+q",
     "command": "cursorHome",
@@ -152,10 +144,17 @@
     "key": "ctrl+k w",
     "command": "workbench.action.closeEditorsInGroup"
   },
+  {
+    "key": "ctrl+shift+alt+down",
+    "command": "-editor.action.copyLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+alt+up",
+    "command": "editor.action.copyLinesUpAction"
+  },
 
-  // --------------------------------------------------------------------------------
   // Removed ------------------------------------------------------------------------
-  // --------------------------------------------------------------------------------
   {
     "key": "ctrl+shift+t",
     "command": "-workbench.action.reopenClosedEditor"
@@ -350,7 +349,6 @@
     "command": "-workbench.view.scm",
     "when": "workbench.scm.active"
   },
-
   {
     "key": "ctrl+shift+s",
     "command": "-workbench.action.files.saveAs"
@@ -376,8 +374,33 @@
     "when": "inQuickOpen && inRecentFilesPicker"
   },
   {
-    "key": "alt+f12",
-    "command": "-editor.action.peekDefinition",
-    "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
-  }
+    "key": "shift+alt+up",
+    "command": "-editor.action.insertCursorAbove",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+up",
+    "command": "-notebook.cell.copyUp",
+    "when": "notebookEditorFocused && !inputFocus"
+  },
+  {
+    "key": "shift+alt+down",
+    "command": "-editor.action.insertCursorBelow",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+down",
+    "command": "-notebook.cell.copyDown",
+    "when": "notebookEditorFocused && !inputFocus"
+  },
+  {
+    "key": "shift+alt+down",
+    "command": "editor.action.copyLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+alt+up",
+    "command": "-editor.action.copyLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
 ]
