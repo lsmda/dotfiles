@@ -2,6 +2,9 @@
 font_family JetBrainsMono Nerd Font Mono
 font_size 13.0
 
+# Theme
+include ./Everforest Dark Medium.conf
+
 # Shell integration
 shell_integration no-rc no-cursor
 
@@ -14,4 +17,7 @@ cursor_shape block
 cursor_stop_blinking_after 0
 sync_to_monitor yes
 
-include bubblegum-theme.conf
+# BEGIN_KITTY_THEME
+# Jellybeans
+include current-theme.conf
+# END_KITTY_THEME
