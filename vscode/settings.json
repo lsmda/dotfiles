@@ -95,4 +95,5 @@
   "window.customTitleBarVisibility": "auto",
   "window.menuBarVisibility": "toggle",
   "window.zoomLevel": 2,
+  "update.mode": "manual",
 }
