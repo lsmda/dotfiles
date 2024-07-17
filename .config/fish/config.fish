@@ -1,6 +1,13 @@
 # Disable greeting
 set fish_greeting
 
+alias dd="sudo dockerd"
+alias gfs="gocryptfs"
+alias ll="ls -l"
+alias lz="lazygit"
+alias mt="mount"
+alias umt="umount"
+
 # Check if TMUX is unset or empty and if the session is interactive
 if test -z "$TMUX" && status is-interactive
   # Check if any Tmux sessions exist
