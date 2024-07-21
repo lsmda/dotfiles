@@ -7,8 +7,8 @@ alias ll="ls -l"
 alias lz="lazygit"
 alias mt="mount"
 alias umt="umount"
-alias files="sudo mount -t nfs 10.0.0.5:/files /mnt/nfs/files/"
-alias media="sudo mount -t nfs 10.0.0.5:/media /mnt/nfs/media/"
+alias files="sudo mount -t nfs 10.0.0.5:/files /mnt/files/"
+alias media="sudo mount -t nfs 10.0.0.5:/media /mnt/media/"
 
 # Check if TMUX is unset or empty and if the session is interactive
 if test -z "$TMUX" && status is-interactive
