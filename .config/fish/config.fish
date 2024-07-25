@@ -3,7 +3,7 @@ set fish_greeting
 
 alias dd="sudo dockerd"
 alias gfs="gocryptfs"
-alias ll="ls -l"
+alias ll="ls -la"
 alias lz="lazygit"
 alias mt="mount"
 alias umt="umount"
