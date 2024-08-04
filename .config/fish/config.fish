@@ -2,6 +2,7 @@
 set fish_greeting
 
 alias dd="sudo dockerd"
+alias ff="fastfetch"
 alias gfs="gocryptfs"
 alias ll="ls -la"
 alias lz="lazygit"
