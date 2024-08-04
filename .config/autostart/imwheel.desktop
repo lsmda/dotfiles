@@ -3,4 +3,3 @@ Type=Application
 Name=IMWheel
 Exec=imwheel
 X-GNOME-Autostart-enabled=true
-
