@@ -36,26 +36,7 @@ function cuda
       ncurses5
       stdenv.cc
       binutils
-      python3
-
-      # Project requirements
-      python3Packages.torch
-      python3Packages.torchvision
-      python3Packages.torchaudio
-      python3Packages.torchsde
-      python3Packages.einops
-      python3Packages.transformers
-      python3Packages.tokenizers
-      python3Packages.sentencepiece
-      python3Packages.safetensors
-      python3Packages.aiohttp
-      python3Packages.pyyaml
-      python3Packages.pillow
-      python3Packages.scipy
-      python3Packages.tqdm
-      python3Packages.psutil
-      python3Packages.kornia
-      python3Packages.soundfile
+      python312Packages.virtualenv
     ];
 
     shellHook = \'\'

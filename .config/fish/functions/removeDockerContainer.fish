@@ -8,8 +8,6 @@ function removeDockerContainer
   for container in $containers
     if echo $container | grep -qE $regex
       docker rm -v --force $container
-      echo "removed"
-      echo -e "\n"
     end
   end
 end
