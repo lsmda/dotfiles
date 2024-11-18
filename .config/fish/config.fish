@@ -1,6 +1,7 @@
 # Disable greeting
 set fish_greeting
 
+alias ..="cd .."
 alias dd="sudo dockerd"
 alias ff="fastfetch"
 alias gfs="gocryptfs"
