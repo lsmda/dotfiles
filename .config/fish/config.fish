@@ -9,6 +9,7 @@ alias ll="ls -la"
 alias lz="lazygit"
 alias mt="mount"
 alias umt="umount"
+alias bios="sudo systemctl reboot --firmware-setup"
 
 alias files="sudo mount -t nfs 10.0.0.5:/files /mnt/files/"
 alias media="sudo mount -t nfs 10.0.0.5:/media /mnt/media/"
