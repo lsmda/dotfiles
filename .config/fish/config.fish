@@ -3,6 +3,7 @@ set fish_greeting
 
 alias ..="cd .."
 alias dd="sudo dockerd"
+alias ns="nix-shell"
 alias ff="fastfetch"
 alias gfs="gocryptfs"
 alias ll="ls -la"
