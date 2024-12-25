@@ -21,6 +21,75 @@ end
 
 local terminal = "kitty"
 
+local client_keys = {
+	{
+		{ super },
+		"f",
+		function(c)
+			c.fullscreen = not c.fullscreen
+			c:raise()
+		end,
+		{ description = "toggle fullscreen", group = "client" },
+	},
+
+	{
+		{ super },
+		"q",
+		function(c)
+			c:kill()
+		end,
+		{ description = "close", group = "client" },
+	},
+
+	{
+		{ super },
+		"t",
+		function(c)
+			c.ontop = not c.ontop
+		end,
+		{ description = "toggle keep on top", group = "client" },
+	},
+
+	{
+		{ super },
+		"n",
+		function(c)
+			c.minimized = true
+		end,
+		{ description = "minimize", group = "client" },
+	},
+
+	{
+		{ super },
+		"m",
+		function(c)
+			c.maximized = not c.maximized
+			c:raise()
+		end,
+		{ description = "(un)maximize", group = "client" },
+	},
+
+	{
+		{ super, ctrl },
+		"m",
+		function(c)
+			c.maximized_vertical = not c.maximized_vertical
+			c:raise()
+		end,
+		{ description = "(un)maximize vertically", group = "client" },
+	},
+
+	{
+		{ super, shift },
+		"m",
+		function(c)
+			c.maximized_horizontal = not c.maximized_horizontal
+			c:raise()
+		end,
+		{ description = "(un)maximize horizontally", group = "client" },
+	},
+}
+
 local global_keys = {
 	{
 		{ super },
@@ -184,6 +253,10 @@ local global_keys = {
 }
 
 local keys = { client = {}, global = {} }
+
+for _, config in ipairs(client_keys) do
+	keys.client = gears.table.join(keys.client, awful.key(config[1], config[2], config[3], config[4]))
+end
 
 for _, config in ipairs(global_keys) do
 	keys.global = gears.table.join(keys.global, awful.key(config[1], config[2], config[3], config[4]))
