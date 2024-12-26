@@ -52,7 +52,6 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- this is used later as the default terminal and editor to run.
 local terminal = "kitty"
-local super = "Mod4"
 
 awful.layout.layouts = {
   awful.layout.suit.tile.left,
@@ -63,49 +62,6 @@ menubar.utils.terminal = terminal -- set the terminal for applications that requ
 
 local keyboard_layout = awful.widget.keyboardlayout()
 local system_clock = wibox.widget.textclock()
-
--- create a wibox for each screen and add it
-local taglist_buttons = gears.table.join(
-  awful.button({}, 1, function(t)
-    t:view_only()
-  end),
-  awful.button({ super }, 1, function(t)
-    if client.focus then
-      client.focus:move_to_tag(t)
-    end
-  end),
-  awful.button({}, 3, awful.tag.viewtoggle),
-  awful.button({ super }, 3, function(t)
-    if client.focus then
-      client.focus:toggle_tag(t)
-    end
-  end),
-  awful.button({}, 5, function(t)
-    awful.tag.viewnext(t.screen)
-  end),
-  awful.button({}, 4, function(t)
-    awful.tag.viewprev(t.screen)
-  end)
-)
-
-local tasklist_buttons = gears.table.join(
-  awful.button({}, 1, function(c)
-    if c == client.focus then
-      c.minimized = true
-    else
-      c:emit_signal("request::activate", "tasklist", { raise = true })
-    end
-  end),
-  awful.button({}, 3, function()
-    awful.menu.client_list { theme = { width = 250 } }
-  end),
-  awful.button({}, 4, function()
-    awful.client.focus.byidx(1)
-  end),
-  awful.button({}, 5, function()
-    awful.client.focus.byidx(-1)
-  end)
-)
 
 local function set_wallpaper(s)
   -- wallpaper
@@ -122,32 +78,26 @@ end
 -- re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+require "sysconf"
+
+local tags = {}
+
+for i = 1, NUMBER_OF_TAGS do
+  tags[i] = tostring(i)
+end
+
 awful.screen.connect_for_each_screen(function(s)
   -- wallpaper
   set_wallpaper(s)
 
   -- each screen has its own tag table.
-  awful.tag({ "1", "2", "3", "4" }, s, awful.layout.layouts[1])
+  awful.tag(tags, s, awful.layout.layouts[1])
 
   -- create a promptbox for each screen
   s.mypromptbox = awful.widget.prompt()
   -- create an imagebox widget which will contain an icon indicating which layout we're using.
   -- we need one layoutbox per screen.
   s.mylayoutbox = awful.widget.layoutbox(s)
-  s.mylayoutbox:buttons(gears.table.join(
-    awful.button({}, 1, function()
-      awful.layout.inc(1)
-    end),
-    awful.button({}, 3, function()
-      awful.layout.inc(-1)
-    end),
-    awful.button({}, 4, function()
-      awful.layout.inc(1)
-    end),
-    awful.button({}, 5, function()
-      awful.layout.inc(-1)
-    end)
-  ))
 
   -- create a taglist widget
   s.mytaglist = awful.widget.taglist {
@@ -202,6 +152,4 @@ client.connect_signal("unfocus", function(c)
   c.border_color = beautiful.border_normal
 end)
 
-require "sysconf.rules"
-
-beautiful.useless_gap = 6
+beautiful.useless_gap = 5
