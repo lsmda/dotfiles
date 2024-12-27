@@ -49,4 +49,20 @@ M.set_keybind = function(keystr, func, data)
   return awful.key(m, k, func, { description = d, group = g })
 end
 
+M.set_tag_keybind = function(index)
+  return {
+    {
+      "super+" .. "#" .. index + 9,
+      function()
+        local screen = awful.screen.focused()
+        local tag = screen.tags[index]
+        if tag then
+          tag:view_only()
+        end
+      end,
+      { description = "View tag #" .. index, group = "tag" },
+    },
+  }
+end
+
 return M

@@ -5,12 +5,10 @@ local gears = require "gears"
 local hotkeys_popup = require "awful.hotkeys_popup"
 
 local exec = require("utils.cmd").exec
-local set_keybind = require("utils.bind").set_keybind
-
-local terminal = "kitty"
+local set_keybind = require("utils.binds").set_keybind
 
 ----------------------------
------- MOUSE KEYBINDS ------
+------ mouse keybinds ------
 ----------------------------
 
 local mouse_keybinds = {
@@ -56,7 +54,7 @@ local mouse_keybinds = {
 }
 
 -----------------------------
------- CLIENT KEYBINDS ------
+------ client keybinds ------
 -----------------------------
 
 local client_keybinds = {
@@ -65,7 +63,7 @@ local client_keybinds = {
     function(c)
       c:kill()
     end,
-    { description = "Close", group = "client" },
+    { description = "Close client", group = "client" },
   },
 
   {
@@ -81,7 +79,7 @@ local client_keybinds = {
     function(c)
       c.minimized = true
     end,
-    { description = "Minimize", group = "client" },
+    { description = "Minimize client", group = "client" },
   },
 
   {
@@ -90,7 +88,7 @@ local client_keybinds = {
       c.maximized = not c.maximized
       c:raise()
     end,
-    { description = "(Un)Maximize", group = "client" },
+    { description = "(Un)Maximize client", group = "client" },
   },
 
   {
@@ -99,7 +97,7 @@ local client_keybinds = {
       c.maximized_vertical = not c.maximized_vertical
       c:raise()
     end,
-    { description = "(Un)Maximize vertically", group = "client" },
+    { description = "(Un)Maximize client vertically", group = "client" },
   },
 
   {
@@ -108,7 +106,7 @@ local client_keybinds = {
       c.maximized_horizontal = not c.maximized_horizontal
       c:raise()
     end,
-    { description = "(Un)Maximize horizontally", group = "client" },
+    { description = "(Un)Maximize client horizontally", group = "client" },
   },
 
   {
@@ -122,25 +120,13 @@ local client_keybinds = {
 }
 
 -----------------------------
------- GLOBAL KEYBINDS ------
+------ global keybinds ------
 -----------------------------
 
 local global_keybinds = {
   {
     "super+r",
-    function()
-      exec {
-        "rofi",
-        "-modes",
-        "combi",
-        "-show",
-        "combi",
-        "-combi-modes",
-        "run,drun",
-        "-combi-display-format",
-        "{text}",
-      }
-    end,
+    exec(apps.launcher),
     { description = "Execute rofi", group = "launcher" },
   },
 
@@ -168,14 +154,12 @@ local global_keybinds = {
 
   {
     "super+Return",
-    function()
-      awful.spawn(terminal)
-    end,
+    exec(apps.terminal),
     { description = "open a terminal", group = "launcher" },
   },
 
   {
-    "super+ctrl+l",
+    "super+ctrl+h",
     function()
       awful.tag.incmwfact(0.05)
     end,
@@ -183,7 +167,7 @@ local global_keybinds = {
   },
 
   {
-    "super+ctrl+h",
+    "super+ctrl+l",
     function()
       awful.tag.incmwfact(-0.05)
     end,
@@ -267,7 +251,7 @@ local global_keybinds = {
 }
 
 ----------------------------
------- SETUP KEYBINDS ------
+------ setup keybinds ------
 ----------------------------
 
 local M = {}
