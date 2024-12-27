@@ -135,8 +135,53 @@ local global_keybinds = {
     { description = "show help", group = "awesome" },
   },
 
+  -- vim-like window navigation
   {
     "super+h",
+    function()
+      awful.client.focus.bydirection "left"
+      if client.focus then
+        client.focus:raise()
+      end
+    end,
+    { description = "Focus left", group = "client" },
+  },
+
+  {
+    "super+j",
+    function()
+      awful.client.focus.bydirection "down"
+      if client.focus then
+        client.focus:raise()
+      end
+    end,
+    { description = "Focus down", group = "client" },
+  },
+
+  {
+    "super+k",
+    function()
+      awful.client.focus.bydirection "up"
+      if client.focus then
+        client.focus:raise()
+      end
+    end,
+    { description = "Focus up", group = "client" },
+  },
+
+  {
+    "super+l",
+    function()
+      awful.client.focus.bydirection "right"
+      if client.focus then
+        client.focus:raise()
+      end
+    end,
+    { description = "Focus right", group = "client" },
+  },
+
+  {
+    "super+ctrl+j",
     function()
       awful.client.focus.byidx(-1)
     end,
@@ -144,7 +189,7 @@ local global_keybinds = {
   },
 
   {
-    "super+l",
+    "super+ctrl+k",
     function()
       awful.client.focus.byidx(1)
     end,
@@ -201,40 +246,45 @@ local global_keybinds = {
     { description = "quit awesome", group = "awesome" },
   },
 
+  -- vim-like window movement
   {
     "super+shift+h",
-    awful.tag.viewprev,
-    { description = "view previous", group = "tag" },
+    function()
+      awful.client.swap.bydirection "left"
+    end,
+    { description = "Move window left", group = "client" },
+  },
+
+  {
+    "super+shift+j",
+    function()
+      awful.client.swap.bydirection "down"
+    end,
+    { description = "Move window down", group = "client" },
+  },
+
+  {
+    "super+shift+k",
+    function()
+      awful.client.swap.bydirection "up"
+    end,
+    { description = "Move window up", group = "client" },
   },
 
   {
     "super+shift+l",
-    awful.tag.viewnext,
-    { description = "view next", group = "tag" },
-  },
-
-  {
-    "super+shift+h",
     function()
-      awful.tag.incnmaster(1, nil, true)
+      awful.client.swap.bydirection "right"
     end,
-    { description = "increase the number of master clients", group = "layout" },
-  },
-
-  {
-    "super+shift+l",
-    function()
-      awful.tag.incnmaster(-1, nil, true)
-    end,
-    { description = "decrease the number of master clients", group = "layout" },
+    { description = "Move window right", group = "client" },
   },
 
   {
     "super+shift+space",
     function()
-      awful.layout.inc(-1)
+      awful.layout.inc(1)
     end,
-    { description = "select previous", group = "layout" },
+    { description = "Select next layout", group = "layout" },
   },
 
   {
