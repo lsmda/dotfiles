@@ -1,9 +1,8 @@
----@diagnostic disable: undefined-global
-
 local awful = require "awful"
 local gears = require "gears"
 local hotkeys_popup = require "awful.hotkeys_popup"
 
+local apps = require("config.globals").apps
 local exec = require("utils.cmd").exec
 local set_keybind = require("utils.binds").set_keybind
 

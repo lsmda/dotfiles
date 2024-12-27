@@ -5,15 +5,9 @@
 local awful = require "awful"
 
 local strutil = require "utils.string"
+local kbd = require("config.globals").kbd
 
 local M = {}
-
-local mods = {
-  alt = "Mod1",
-  shift = "Shift",
-  super = "Mod4",
-  ctrl = "Control",
-}
 
 --- @method parsekeys
 -- @param keystr
@@ -26,8 +20,8 @@ local function parsekeys(keystr)
   local tokens = strutil.split(keystr, "+")
 
   for _, key in ipairs(tokens) do
-    if mods[key] then
-      m[#m + 1] = mods[key] -- modifier
+    if kbd[key] then
+      m[#m + 1] = kbd[key] -- modifier
     else
       k = k .. key -- normal key
     end

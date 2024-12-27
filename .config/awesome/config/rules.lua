@@ -1,9 +1,7 @@
----@diagnostic disable: undefined-global
-
 local awful = require "awful"
 local beautiful = require "beautiful"
 
-local keys = require "sysconf.keys"
+local keys = require "config.keys"
 
 root.keys(keys.global)
 
