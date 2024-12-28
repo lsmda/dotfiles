@@ -1,5 +1,4 @@
-# Disable greeting
-set fish_greeting
+set fish_greeting # disable greeting
 
 alias ..="cd .."
 alias dd="sudo dockerd"
