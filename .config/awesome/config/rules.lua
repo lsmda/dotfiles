@@ -1,85 +1,56 @@
 local awful = require "awful"
-local beautiful = require "beautiful"
+local beautiful = require "awful"
 
 local keys = require "config.keys"
 
-root.keys(keys.global)
-
 awful.rules.rules = {
-  -- rules applied to every window
+  -- all clients will match this rule.
   {
-    id = "global",
     rule = {},
     properties = {
       border_width = beautiful.border_width,
       border_color = beautiful.border_normal,
+      focus = awful.client.focus.filter,
       raise = true,
       keys = keys.client,
-      size_hints_honor = true,
-      honor_workarea = true,
-      honor_padding = true,
-      screen = awful.screen.focused,
-      focus = awful.client.focus.filter,
-      titlebars_enabled = false,
+      -- buttons = {},
+      screen = awful.screen.preferred,
       placement = awful.placement.no_overlap + awful.placement.no_offscreen,
     },
   },
 
-  -- set certain applications as floating
+  -- floating clients.
   {
-    id = "floating",
     rule_any = {
       instance = {
-        "Thunar",
-        "feh",
-        "simplescreenrecorder",
-        "mpv",
+        "DTA", -- firefox addon downthemall.
+        "copyq", -- includes session name in class.
+        "pinentry",
       },
       class = {
-        "Pavucontrol",
-        "Lxappearance",
-        "Nm-connection-editor",
-        "qBittorrent",
-        "mpv",
-        "gnuplot_qt",
-        "zoom",
+        "Arandr",
+        "Blueman-manager",
+        "Gpick",
+        "Kruler",
+        "MessageWin", -- kalarm.
+        "Sxiv",
+        "Tor Browser", -- needs a fixed window size to avoid fingerprinting by screen size.
+        "Wpa_gui",
+        "veromix",
+        "xtightvncviewer",
+      },
+
+      -- note that the name property shown in xprop might be set slightly after creation of the client
+      -- and the name shown there might not match defined rules here.
+      name = {
+        "Event Tester", -- xev.
       },
       role = {
-        "GtkFileChooserDialog",
-        "conversation",
-      },
-      type = {
-        "dialog",
+        "AlarmWindow", -- thunderbird's calendar.
+        "ConfigManager", -- thunderbird's about:config.
+        "pop-up", -- e.g. google chrome's (detached) developer tools.
       },
     },
-    properties = {
-      floating = true,
-      placement = awful.placement.centered,
-    },
-  },
-
-  -- force window height for certain applications
-  {
-    rule_any = {
-      instance = {
-        "Thunar",
-      },
-      class = {
-        "Pavucontrol",
-      },
-    },
-    properties = {
-      height = 700,
-    },
-  },
-
-  {
-    rule_any = {
-      instance = { "Xephyr" },
-      class = { "Xephyr" },
-    },
-    properties = {
-      placement = awful.placement.top_right,
-    },
+    properties = { floating = false },
   },
 }

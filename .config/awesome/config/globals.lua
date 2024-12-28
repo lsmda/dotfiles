@@ -1,3 +1,5 @@
+local gears = require "gears"
+
 local M = {}
 
 M.apps = {
@@ -24,6 +26,7 @@ M.kbd = {
 }
 
 M.system = {
+  config_path = gears.filesystem.get_configuration_dir(),
   font_family = "JetBrainsMono Nerd Font",
   tags = 5,
 }

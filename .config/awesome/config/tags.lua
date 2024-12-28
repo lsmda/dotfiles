@@ -3,9 +3,9 @@ local gears = require "gears"
 local bind = require "utils.binds"
 local keys = require "config.keys"
 
-local system = require("config.globals").system
 local set_keybind = bind.set_keybind
 local set_tag_keybind = bind.set_tag_keybind
+local system = require("config.globals").system
 
 -- extend global keys with tag keybinds
 for i = 1, system.tags do

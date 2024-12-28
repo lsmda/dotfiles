@@ -3,12 +3,10 @@ local gears = require "gears"
 local hotkeys_popup = require "awful.hotkeys_popup"
 
 local apps = require("config.globals").apps
-local exec = require("utils.cmd").exec
 local set_keybind = require("utils.binds").set_keybind
+local exec = require("utils.cmd").exec
 
-----------------------------
 ------ mouse keybinds ------
-----------------------------
 
 local mouse_keybinds = {
   {
@@ -52,9 +50,7 @@ local mouse_keybinds = {
   },
 }
 
------------------------------
 ------ client keybinds ------
------------------------------
 
 local client_keybinds = {
   {
@@ -62,7 +58,23 @@ local client_keybinds = {
     function(c)
       c:kill()
     end,
-    { description = "Close client", group = "client" },
+    { description = "Close client", group = "layout" },
+  },
+
+  {
+    "ctrl+alt+l",
+    function()
+      awful.tag.incmwfact(0.05)
+    end,
+    { description = "Increase master width factor", group = "layout" },
+  },
+
+  {
+    "ctrl+alt+h",
+    function()
+      awful.tag.incmwfact(-0.05)
+    end,
+    { description = "Decrease master width factor", group = "layout" },
   },
 
   {
@@ -118,11 +130,18 @@ local client_keybinds = {
   },
 }
 
------------------------------
 ------ global keybinds ------
------------------------------
 
 local global_keybinds = {
+
+  {
+    "super+space",
+    function()
+      awful.layout.inc(1)
+    end,
+    { description = "Next layout", group = "awesome" },
+  },
+
   {
     "super+r",
     exec(apps.launcher),
@@ -135,7 +154,8 @@ local global_keybinds = {
     { description = "show help", group = "awesome" },
   },
 
-  -- vim-like window navigation
+  -- vim-like window navigation --
+
   {
     "super+h",
     function()
@@ -180,8 +200,70 @@ local global_keybinds = {
     { description = "Focus right", group = "client" },
   },
 
+  -- sound controls --
+
   {
-    "super+ctrl+j",
+    "XF86AudioRaiseVolume",
+    function()
+      awful.spawn("amixer -D pulse sset Master 5%+", false)
+      awesome.emit_signal "widget::volume"
+      awesome.emit_signal("module::volume_osd:show", true)
+    end,
+    { description = "Increase volume by 5%", group = "hotkeys" },
+  },
+
+  {
+    "XF86AudioLowerVolume",
+    function()
+      awful.spawn("amixer -D pulse sset Master 5%-", false)
+      awesome.emit_signal "widget::volume"
+      awesome.emit_signal("module::volume_osd:show", true)
+    end,
+    { description = "Decrease volume by 5%", group = "hotkeys" },
+  },
+
+  {
+    "XF86AudioMute",
+    function()
+      awful.spawn("amixer -D pulse set Master 1+ toggle", false)
+    end,
+    { description = "Toggle mute", group = "hotkeys" },
+  },
+
+  {
+    "XF86AudioNext",
+    function()
+      awful.spawn("mpc next", false)
+    end,
+    { description = "Next track", group = "hotkeys" },
+  },
+
+  {
+    "XF86AudioPrev",
+    function()
+      awful.spawn("mpc prev", false)
+    end,
+    { description = "Previous track", group = "hotkeys" },
+  },
+
+  {
+    "XF86AudioPlay",
+    function()
+      awful.spawn("mpc toggle", false)
+    end,
+    { description = "Play/Pause", group = "hotkeys" },
+  },
+
+  {
+    "XF86AudioMicMute",
+    function()
+      awful.spawn("amixer set Capture toggle", false)
+    end,
+    { description = "Mute microphone", group = "hotkeys" },
+  },
+
+  {
+    "super+shift+h",
     function()
       awful.client.focus.byidx(-1)
     end,
@@ -189,7 +271,7 @@ local global_keybinds = {
   },
 
   {
-    "super+ctrl+k",
+    "super+shift+l",
     function()
       awful.client.focus.byidx(1)
     end,
@@ -200,22 +282,6 @@ local global_keybinds = {
     "super+Return",
     exec(apps.terminal),
     { description = "open a terminal", group = "launcher" },
-  },
-
-  {
-    "super+ctrl+h",
-    function()
-      awful.tag.incmwfact(0.05)
-    end,
-    { description = "increase master width factor", group = "layout" },
-  },
-
-  {
-    "super+ctrl+l",
-    function()
-      awful.tag.incmwfact(-0.05)
-    end,
-    { description = "decrease master width factor", group = "layout" },
   },
 
   {
@@ -247,8 +313,9 @@ local global_keybinds = {
   },
 
   -- vim-like window movement
+
   {
-    "super+shift+h",
+    "shift+h",
     function()
       awful.client.swap.bydirection "left"
     end,
@@ -256,7 +323,7 @@ local global_keybinds = {
   },
 
   {
-    "super+shift+j",
+    "shift+j",
     function()
       awful.client.swap.bydirection "down"
     end,
@@ -264,7 +331,7 @@ local global_keybinds = {
   },
 
   {
-    "super+shift+k",
+    "shift+k",
     function()
       awful.client.swap.bydirection "up"
     end,
@@ -272,7 +339,7 @@ local global_keybinds = {
   },
 
   {
-    "super+shift+l",
+    "shift+l",
     function()
       awful.client.swap.bydirection "right"
     end,
@@ -299,9 +366,7 @@ local global_keybinds = {
   },
 }
 
-----------------------------
 ------ setup keybinds ------
-----------------------------
 
 local M = {}
 
